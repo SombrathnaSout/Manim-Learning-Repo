@@ -32,5 +32,5 @@ class AnimatedSquareToCircle(Scene):
         self.play(square.animate.rotate(PI / 4))
         self.play(Transform(square, circle))
         self.play(
-            circle.animate.set_fill(PINK, opacity=0.5)
+            circle.animate.set_fill(PINK, opacity=0.5) # change the color of the circle with animation
         )
