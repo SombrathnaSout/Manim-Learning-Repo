@@ -74,3 +74,29 @@ class TransformCycle(Scene):
         self.wait()
         for t in [t1,t2]:
             self.play(Transform(a,t))
+
+
+class MathFunction(Scene):
+    def construct(self):
+        ax = Axes(x_range=[-3, 3], y_range=[-3, 3])
+        curve = ax.plot(lambda x: (x + 2)*x*(x - 2)/2, color=BLUE)
+        area = ax.get_area(curve, x_range=[-2, 0], color=RED, opacity=0.2)
+        self.play(Create(ax,run_time=1), Create(curve,run_time=1) )
+        self.play(FadeIn(area))
+        self.wait(2)
+        # self.add(ax,curve,area)
+
+class SquareToCircle2(Scene):
+    def construct(self):
+        square = Square(color=GREEN, fill_opacity=0.7)
+        circle = Circle(color=BLUE, fill_opacity=0.7)
+
+        self.play(DrawBorderThenFill(square))
+        # self.play(Transform(square, circle))
+        # self.play(FadeOut(square)) # the first argument become the second argument, meaning the square become circle so we have to fade out using the square
+        # self.wait(2)
+        #but if we use replaceTransform the circle will remain instead of the square
+        self.play(ReplacementTransform(square, circle))
+        self.play(Indicate(circle))
+        self.play(FadeOut(circle))
+        self.wait(2)
