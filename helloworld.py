@@ -81,8 +81,7 @@ class MathFunction(Scene):
         ax = Axes(x_range=[-3, 3], y_range=[-3, 3])
         curve = ax.plot(lambda x: (x + 2)*x*(x - 2)/2, color=BLUE)
         area = ax.get_area(curve, x_range=[-2, 0], color=RED, opacity=0.2)
-        self.play(Create(ax,run_time=1), Create(curve,run_time=1) )
-        self.play(FadeIn(area))
+        self.play(Create(ax), Create(curve), Create(area) )
         self.wait(2)
         # self.add(ax,curve,area)
 
